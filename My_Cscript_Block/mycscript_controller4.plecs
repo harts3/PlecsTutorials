@@ -1,5 +1,5 @@
 Plecs {
-  Name          "mycscript_controller2"
+  Name          "mycscript_controller4"
   Version       "4.4"
   CircuitModel  "ContStateSpace"
   StartTime     "0.0"
@@ -47,7 +47,7 @@ Plecs {
   ScriptsDialogGeometry ""
   ScriptsDialogSplitterPos "0"
   Schematic {
-    Location      [766, 336; 1532, 667]
+    Location      [769, 442; 1535, 776]
     ZoomFactor    1
     SliderPosition [0, 0]
     ShowBrowser   off
@@ -573,7 +573,7 @@ Plecs {
       TimeRange     "0"
       ScrollingMode "1"
       SingleTimeAxis "1"
-      Open          "1"
+      Open          "0"
       Ts            "-1"
       SampleLimit   "0"
       XAxisLabel    "Time (s)"
@@ -889,7 +889,7 @@ Plecs {
         Direction     left
       }
       Schematic {
-        Location      [970, 770; 1361, 951]
+        Location      [1009, 80; 1400, 261]
         ZoomFactor    1
         SliderPosition [0, 0]
         ShowBrowser   off
@@ -939,7 +939,7 @@ Plecs {
           Flipped       off
           Parameter {
             Variable      "DialogGeometry"
-            Value         "[1335 549 500 334]"
+            Value         "[1245 147 500 334]"
             Show          off
           }
           Parameter {
@@ -954,12 +954,12 @@ Plecs {
           }
           Parameter {
             Variable      "NumContStates"
-            Value         "0"
+            Value         "1"
             Show          off
           }
           Parameter {
             Variable      "NumDiscStates"
-            Value         "1"
+            Value         "0"
             Show          off
           }
           Parameter {
@@ -974,12 +974,12 @@ Plecs {
           }
           Parameter {
             Variable      "Ts"
-            Value         "1/fs"
+            Value         "0"
             Show          off
           }
           Parameter {
             Variable      "Parameters"
-            Value         "kp ki 1/fs"
+            Value         "kp ki"
             Show          off
           }
           Parameter {
@@ -999,30 +999,28 @@ Plecs {
           }
           Parameter {
             Variable      "Declarations"
-            Value         "static double kp, ki, Ts;\n#define ek InputSignal(0"
-",0)\ndouble yk;\n#define ik_1 DiscState(0)\n"
+            Value         "#define e InputSignal(0,0)\n#define I ContState(0)"
+"\n#define I_deriv ContDeriv(0)\n"
             Show          off
           }
           Parameter {
             Variable      "StartFcn"
-            Value         "kp = ParamRealData(0,0);\nki = ParamRealData(1,0);"
-"\nTs = ParamRealData(2,0);\nik_1 = 0;"
+            Value         "I = 0;"
             Show          off
           }
           Parameter {
             Variable      "OutputFcn"
-            Value         "OutputSignal(0,0) = yk;"
+            Value         "OutputSignal(0,0) = kp*e+ki*I;"
             Show          off
           }
           Parameter {
             Variable      "UpdateFcn"
-            Value         "double ik;\nik = ik_1 + Ts*ek;\nyk = kp*ek+ki*ik;\n"
-"ik_1 = ik;"
+            Value         ""
             Show          off
           }
           Parameter {
             Variable      "DerivativeFcn"
-            Value         ""
+            Value         "I_deriv = e;"
             Show          off
           }
           Parameter {

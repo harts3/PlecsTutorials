@@ -1,5 +1,5 @@
 Plecs {
-  Name          "mycscript_controller2"
+  Name          "mycscript_controller3"
   Version       "4.4"
   CircuitModel  "ContStateSpace"
   StartTime     "0.0"
@@ -47,7 +47,7 @@ Plecs {
   ScriptsDialogGeometry ""
   ScriptsDialogSplitterPos "0"
   Schematic {
-    Location      [766, 336; 1532, 667]
+    Location      [769, 442; 1535, 776]
     ZoomFactor    1
     SliderPosition [0, 0]
     ShowBrowser   off
@@ -889,7 +889,7 @@ Plecs {
         Direction     left
       }
       Schematic {
-        Location      [970, 770; 1361, 951]
+        Location      [908, 596; 1299, 777]
         ZoomFactor    1
         SliderPosition [0, 0]
         ShowBrowser   off
@@ -939,7 +939,7 @@ Plecs {
           Flipped       off
           Parameter {
             Variable      "DialogGeometry"
-            Value         "[1335 549 500 334]"
+            Value         "[1274 554 500 334]"
             Show          off
           }
           Parameter {
@@ -1000,7 +1000,7 @@ Plecs {
           Parameter {
             Variable      "Declarations"
             Value         "static double kp, ki, Ts;\n#define ek InputSignal(0"
-",0)\ndouble yk;\n#define ik_1 DiscState(0)\n"
+",0)\ndouble yk;\n#define ik_1 DiscState(0)\ndouble ik;\n"
             Show          off
           }
           Parameter {
@@ -1011,13 +1011,13 @@ Plecs {
           }
           Parameter {
             Variable      "OutputFcn"
-            Value         "OutputSignal(0,0) = yk;"
+            Value         "ik = ik_1 + Ts*ek;\nOutputSignal(0,0) = kp*ek+ki*ik"
+";"
             Show          off
           }
           Parameter {
             Variable      "UpdateFcn"
-            Value         "double ik;\nik = ik_1 + Ts*ek;\nyk = kp*ek+ki*ik;\n"
-"ik_1 = ik;"
+            Value         "\nik_1 = ik;"
             Show          off
           }
           Parameter {

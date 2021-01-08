@@ -1,5 +1,5 @@
 Plecs {
-  Name          "mycscript_controller2"
+  Name          "mycscript_controller5"
   Version       "4.4"
   CircuitModel  "ContStateSpace"
   StartTime     "0.0"
@@ -47,7 +47,7 @@ Plecs {
   ScriptsDialogGeometry ""
   ScriptsDialogSplitterPos "0"
   Schematic {
-    Location      [766, 336; 1532, 667]
+    Location      [766, 382; 1532, 716]
     ZoomFactor    1
     SliderPosition [0, 0]
     ShowBrowser   off
@@ -553,22 +553,22 @@ Plecs {
       Position      [605, 115]
       Direction     up
       Flipped       off
-      Location      [1073, 52; 1476, 483]
+      Location      [1093, 42; 1496, 473]
       State         "AAAA/wAAAAD9AAAAAgAAAAH////6AAACbfwCAAAAA/sAAAAQAFoAbwBvA"
 "G0AQQByAGUAYQAAAAAA/////wAAAG4A////+wAAABQAUwBhAHYAZQBkAFYAaQBlAHcAcwAAAAAA//"
-"///wAAAH4A////+wAAAAwAVAByAGEAYwBlAHMAAAAAAP////8AAAB+AP///wAAAAMAAAGTAAAAWPw"
-"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQAAAAAAAAAAZMAAABfAP///wAAAfgAAAH8AAAA"
+"///wAAAH4A////+wAAAAwAVAByAGEAYwBlAHMAAAAAAP////8AAAB+AP///wAAAAMAAAH4AAAAb/w"
+"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQBAAAAAAAAAfgAAABfAP///wAAAfgAAAGIAAAA"
 "BAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAOAFQAbwBvAGwAQgBhAHIBAAAAAP////8AAAAAA"
 "AAAAA=="
       SavedViews    "AAAAAgAAAAA="
-      HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL/gMAAAAJAAAAC"
-"QAAAGQAAAAIAAAAZAAAAAMAAABkAAAAAgAAAGQAAAABAAAAZAAAAAcAAABkAAAABgAAAGQAAAAFAA"
-"AAZAAAAAQAAABkAAAAxwAAAAsBAAABAAAAAAAAAAAAAAAAff////8AAACBAAAAAAAAAAsAAACWAAA"
-"AAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAA"
-"AAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAA"
-"AAxAAAAAQAAAAAAAAPoAAAAADE="
-      PlotPalettes  "AAAAAQAAAAEAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAA"
-"AEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="
+      HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL8AMAAAAGAAAAC"
+"QAAAGQAAAAIAAAAZAAAAAcAAABkAAAABgAAAGQAAAAFAAAAZAAAAAQAAABkAAAB8wAAAAsBAAABAA"
+"AAAAAAAAAAAAAAff////8AAACBAAAAAAAAAAsAAACWAAAAAQAAAAAAAABkAAAAAQAAAAAAAABkAAA"
+"AAQAAAAAAAABkAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAA"
+"AAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAxAAAAAQAAAAAAAAPoAAAAADE="
+      PlotPalettes  "AAAAAQAAAAEAAAABAAAAAQAAAAEC//8u4P//zMwAAAAAAAEAAAABAAAAA"
+"AEAAAABAAAAAQAAAAEAAAABAAAAAAEAAAABP/AAAAAAAAAAAAABAAAAAQAAAAABAAAAAQAAAAAAAA"
+"AAAAAAAAAAAAAAAAAAAAAAAA=="
       Axes          "2"
       TimeRange     "0"
       ScrollingMode "1"
@@ -873,7 +873,16 @@ Plecs {
         Variable      "fs"
         Prompt        "Sample frequency"
         Type          FreeText
-        Value         "25e3"
+        Value         "10e3"
+        Show          on
+        Tunable       off
+        TabName       ""
+      }
+      Parameter {
+        Variable      "td"
+        Prompt        "td"
+        Type          FreeText
+        Value         "0.9*(1/(10e3))"
         Show          on
         Tunable       off
         TabName       ""
@@ -889,7 +898,7 @@ Plecs {
         Direction     left
       }
       Schematic {
-        Location      [970, 770; 1361, 951]
+        Location      [937, 105; 1328, 286]
         ZoomFactor    1
         SliderPosition [0, 0]
         ShowBrowser   off
@@ -939,7 +948,7 @@ Plecs {
           Flipped       off
           Parameter {
             Variable      "DialogGeometry"
-            Value         "[1335 549 500 334]"
+            Value         "[1327 458 500 334]"
             Show          off
           }
           Parameter {
@@ -974,12 +983,12 @@ Plecs {
           }
           Parameter {
             Variable      "Ts"
-            Value         "1/fs"
+            Value         "[1/fs, 0; -2, 0]"
             Show          off
           }
           Parameter {
             Variable      "Parameters"
-            Value         "kp ki 1/fs"
+            Value         "kp ki 1/fs td"
             Show          off
           }
           Parameter {
@@ -999,25 +1008,28 @@ Plecs {
           }
           Parameter {
             Variable      "Declarations"
-            Value         "static double kp, ki, Ts;\n#define ek InputSignal(0"
-",0)\ndouble yk;\n#define ik_1 DiscState(0)\n"
+            Value         "#include <float.h>\nstatic double kp, ki, Ts;\nstat"
+"ic double td;\n#define ek InputSignal(0,0)\ndouble yk;\n#define ik_1 DiscStat"
+"e(0)\ndouble ik;\ndouble NEVER;\n"
             Show          off
           }
           Parameter {
             Variable      "StartFcn"
             Value         "kp = ParamRealData(0,0);\nki = ParamRealData(1,0);"
-"\nTs = ParamRealData(2,0);\nik_1 = 0;"
+"\nTs = ParamRealData(2,0);\ntd = ParamRealData(3,0);\nNEVER = DBL_MAX;\nik_1 "
+"= 0;\nNextSampleHit = NEVER;"
             Show          off
           }
           Parameter {
             Variable      "OutputFcn"
-            Value         "OutputSignal(0,0) = yk;"
+            Value         "\nOutputSignal(0,0) = yk;"
             Show          off
           }
           Parameter {
             Variable      "UpdateFcn"
-            Value         "double ik;\nik = ik_1 + Ts*ek;\nyk = kp*ek+ki*ik;\n"
-"ik_1 = ik;"
+            Value         "if (NextSampleHit == NEVER) //beginning of switchin"
+"g cycle\n{\n\tik_1 = ik;\n\tik = ik_1 + Ts*ek;\n\tyk = kp*ek+ki*ik;\n\tNextSa"
+"mpleHit = CurrentTime + td;\n}\nelse\n\tNextSampleHit = NEVER;\n\n"
             Show          off
           }
           Parameter {
