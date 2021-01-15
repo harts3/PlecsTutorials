@@ -1,0 +1,826 @@
+Plecs {
+  Name          "IControl_disc_2"
+  Version       "4.3"
+  CircuitModel  "ContStateSpace"
+  StartTime     "0.0"
+  StopTime      "10e-3"
+  Timeout       ""
+  Solver        "dopri"
+  MaxStep       "1"
+  InitStep      "-1"
+  FixedStep     "1e-3"
+  Refine        "1"
+  ZCStepSize    "1e-9"
+  RelTol        "1e-3"
+  AbsTol        "-1"
+  TurnOnThreshold "0"
+  SyncFixedStepTasks "2"
+  UseSingleCommonBaseRate "2"
+  LossVariableLimitExceededMsg "3"
+  NegativeSwitchLossMsg "3"
+  DivisionByZeroMsg "2"
+  StiffnessDetectionMsg "2"
+  MaxConsecutiveZCs "1000"
+  AlgebraicLoopWithStateMachineMsg "2"
+  AssertionAction "1"
+  InitializationCommands "fs = 50e3;"
+  InitialState  "1"
+  SystemState   ""
+  CodeGenParameterInlining "2"
+  CodeGenInliningExceptions "AAAACwAAAAAA"
+  CodeGenFloatingPointFormat "2"
+  CodeGenAbsTimeUsageMsg "3"
+  CodeGenBaseName ""
+  CodeGenOutputDir ""
+  CodeGenExtraOpts ""
+  CodeGenTarget "Generic"
+  CodeGenTargetSettings ""
+  ExtendedMatrixPrecision "1"
+  MatrixSignificanceCheck "2"
+  EnableStateSpaceSplitting "2"
+  DisplayStateSpaceSplitting "1"
+  DiscretizationMethod "2"
+  ExternalModeSettings ""
+  AlgebraicLoopMethod "1"
+  AlgebraicLoopTolerance "1e-6"
+  ScriptsDialogGeometry ""
+  ScriptsDialogSplitterPos "0"
+  Schematic {
+    Location      [353, 45; 936, 341]
+    ZoomFactor    1
+    SliderPosition [0, 0]
+    ShowBrowser   off
+    BrowserWidth  100
+    Component {
+      Type          Scope
+      Name          "Scope"
+      Show          on
+      Position      [535, 70]
+      Direction     up
+      Flipped       off
+      Location      [937, 45; 1515, 366]
+      State         "AAAA/wAAAAD9AAAAAgAAAAEAAAB4AAABOPwCAAAABPsAAAAUAFMAYQB2A"
+"GUAZABWAGkAZQB3AHMAAAAAAAAAATgAAABmAP////sAAAAQAFoAbwBvAG0AQQByAGUAYQAAAAAA//"
+"///wAAAFwA////+wAAABwAUwBpAG0AdQBsAGEAdABpAG8AbgBSAHUAbgBzAAAAAAAAAAFtAAAAAAA"
+"AAAD7AAAADABUAHIAYQBjAGUAcwAAAAAA/////wAAAGYA////AAAAAwAAAkIAAABY/AEAAAAB+wAA"
+"ABQARABhAHQAYQBXAGkAZABnAGUAdAAAAAAAAAACQgAAAEIA////AAACQgAAASUAAAAEAAAABAAAA"
+"AgAAAAI/AAAAAEAAAACAAAAAQAAAA4AVABvAG8AbABCAGEAcgEAAAAA/////wAAAAAAAAAA"
+      SavedViews    "AAAAAgAAAAEAAAAYAFMAYQB2AGUAZAAgAHYAaQBlAHcAIAAxAAAAAAAAA"
+"AA/hHrhR64UewAAAAIBQCOHNHK17/NAJadbeq5y4wG/0AAAAAAAAEAcAAAAAAAAAAAAAAAAAAAAAA"
+"AAAAAAAAAA"
+      HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL/gMAAAAJAAAAC"
+"QAAAGQAAAAIAAAAZAAAAAUAAABkAAAABAAAAGQAAAAHAAAAZAAAAAYAAABkAAAAAQAAAGQAAAADAA"
+"AAZAAAAAIAAABkAAACQgAAAAsBAAABAAAAAAAAAAAAAAAAZP////8AAACBAAAAAAAAAAsAAAB9AAA"
+"AAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAA"
+"AAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAA"
+"AHFAAAAAQAAAAAAAAPoAAAAABM="
+      PlotPalettes  "AAAAAQAAAAEAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAA"
+"AEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="
+      Axes          "2"
+      TimeRange     "0"
+      ScrollingMode "1"
+      SingleTimeAxis "1"
+      Open          "1"
+      Ts            "-1"
+      SampleLimit   "0"
+      XAxisLabel    "Time (s)"
+      Axis {
+        Name          "Load Voltage"
+        AutoScale     1
+        MinValue      0
+        MaxValue      1
+        Signals       {"Load voltage"}
+        SignalTypes   [ ]
+        AxisLabel     "Voltage (V)"
+        Untangle      0
+        KeepBaseline  off
+        BaselineValue 0
+      }
+      Axis {
+        Name          "Source Current"
+        AutoScale     1
+        MinValue      0
+        MaxValue      1
+        Signals       {"Source current"}
+        SignalTypes   [ ]
+        AxisLabel     "Current (A)"
+        Untangle      0
+        KeepBaseline  off
+        BaselineValue 0
+      }
+      Fourier {
+        SingleXAxis   on
+        AxisLabel     "Frequency"
+        Scaling       0
+        PhaseDisplay  0
+        Axis {
+          Name          ""
+          AutoScale     1
+          MinValue      0
+          MaxValue      1
+          Signals       {}
+          Untangle      0
+          KeepBaseline  off
+          BaselineValue 0
+        }
+        Axis {
+          Name          ""
+          AutoScale     1
+          MinValue      0
+          MaxValue      1
+          Signals       {}
+          Untangle      0
+          KeepBaseline  off
+          BaselineValue 0
+        }
+      }
+    }
+    Component {
+      Type          DCVoltageSource
+      Name          "V_dc"
+      Show          off
+      Position      [220, 230]
+      Direction     down
+      Flipped       on
+      Parameter {
+        Variable      "V"
+        Value         "24"
+        Show          on
+      }
+    }
+    Component {
+      Type          Diode
+      Name          "D1"
+      Show          off
+      Position      [285, 225]
+      Direction     up
+      Flipped       on
+      Parameter {
+        Variable      "Vf"
+        Value         "0"
+        Show          off
+      }
+      Parameter {
+        Variable      "Ron"
+        Value         "0"
+        Show          off
+      }
+      Parameter {
+        Variable      "thermal"
+        Value         ""
+        Show          off
+      }
+      Parameter {
+        Variable      "T_init"
+        Value         "0"
+        Show          off
+      }
+    }
+    Component {
+      Type          Mosfet
+      Name          "T1"
+      Show          off
+      Position      [255, 185]
+      Direction     right
+      Flipped       on
+      Parameter {
+        Variable      "Ron"
+        Value         "0"
+        Show          off
+      }
+      Parameter {
+        Variable      "s_init"
+        Value         "0"
+        Show          off
+      }
+      Parameter {
+        Variable      "thermal"
+        Value         ""
+        Show          off
+      }
+      Parameter {
+        Variable      "T_init"
+        Value         "0"
+        Show          off
+      }
+    }
+    Component {
+      Type          Inductor
+      Name          "L1"
+      Show          off
+      Position      [315, 185]
+      Direction     left
+      Flipped       off
+      Parameter {
+        Variable      "L"
+        Value         "33e-6"
+        Show          on
+      }
+      Parameter {
+        Variable      "i_init"
+        Value         "0"
+        Show          off
+      }
+    }
+    Component {
+      Type          Resistor
+      Name          "R"
+      Show          off
+      Position      [425, 230]
+      Direction     down
+      Flipped       off
+      Parameter {
+        Variable      "R"
+        Value         "5"
+        Show          on
+      }
+    }
+    Component {
+      Type          Capacitor
+      Name          "C1"
+      Show          off
+      Position      [380, 230]
+      Direction     down
+      Flipped       on
+      Parameter {
+        Variable      "C"
+        Value         "100e-6"
+        Show          on
+      }
+      Parameter {
+        Variable      "v_init"
+        Value         "0"
+        Show          off
+      }
+    }
+    Component {
+      Type          Voltmeter
+      Name          "Vm1"
+      Show          off
+      Position      [455, 230]
+      Direction     up
+      Flipped       off
+    }
+    Component {
+      Type          Ammeter
+      Name          "Am1"
+      Show          off
+      Position      [355, 185]
+      Direction     left
+      Flipped       off
+    }
+    Component {
+      Type          Switch
+      Name          "S1"
+      Show          on
+      Position      [500, 185]
+      Direction     left
+      Flipped       off
+      Parameter {
+        Variable      "s_init"
+        Value         "0"
+        Show          off
+      }
+    }
+    Component {
+      Type          Resistor
+      Name          "R1"
+      Show          off
+      Position      [525, 230]
+      Direction     down
+      Flipped       off
+      Parameter {
+        Variable      "R"
+        Value         "5"
+        Show          on
+      }
+    }
+    Component {
+      Type          Step
+      Name          "Step1"
+      Show          on
+      Position      [535, 125]
+      Direction     right
+      Flipped       on
+      Parameter {
+        Variable      "Time"
+        Value         "5e-3"
+        Show          on
+      }
+      Parameter {
+        Variable      "Before"
+        Value         "0"
+        Show          off
+      }
+      Parameter {
+        Variable      "After"
+        Value         "1"
+        Show          off
+      }
+      Parameter {
+        Variable      "DataType"
+        Value         "10"
+        Show          off
+      }
+    }
+    Component {
+      Type          Constant
+      Name          "Vref"
+      Show          on
+      Position      [40, 120]
+      Direction     right
+      Flipped       off
+      Frame         [-10, -10; 10, 10]
+      LabelPosition [0, 13]
+      LabelAlign    up
+      Parameter {
+        Variable      "Value"
+        Value         "12"
+        Show          on
+      }
+      Parameter {
+        Variable      "DataType"
+        Value         "10"
+        Show          off
+      }
+    }
+    Component {
+      Type          Sum
+      Name          "Sum"
+      Show          off
+      Position      [80, 120]
+      Direction     up
+      Flipped       on
+      Parameter {
+        Variable      "IconShape"
+        Value         "2"
+        Show          off
+      }
+      Parameter {
+        Variable      "Inputs"
+        Value         "|+-"
+        Show          off
+      }
+      Parameter {
+        Variable      "DataType"
+        Value         "11"
+        Show          off
+      }
+    }
+    Component {
+      Type          Subsystem
+      Name          "PI voltage\ncontroller"
+      Show          on
+      Position      [130, 120]
+      Direction     up
+      Flipped       off
+      Frame         [-20, -20; 20, 20]
+      LabelPosition [0, 23]
+      LabelAlign    up
+      SampleTime    "-1"
+      CodeGenTarget "Generic"
+      MaskIconFrame on
+      MaskIconOpaque off
+      MaskIconRotates on
+      Parameter {
+        Variable      "kp"
+        Prompt        "kp"
+        Type          FreeText
+        Value         "0.5"
+        Show          off
+        Tunable       off
+        TabName       ""
+      }
+      Parameter {
+        Variable      "ki"
+        Prompt        "ki"
+        Type          FreeText
+        Value         "2.0e3"
+        Show          off
+        Tunable       off
+        TabName       ""
+      }
+      Parameter {
+        Variable      "ts"
+        Prompt        "Sample time"
+        Type          FreeText
+        Value         "1/fs"
+        Show          off
+        Tunable       off
+        TabName       ""
+      }
+      Terminal {
+        Type          Output
+        Position      [24, 0]
+        Direction     right
+      }
+      Terminal {
+        Type          Input
+        Position      [-20, 0]
+        Direction     left
+      }
+      Schematic {
+        Location      [353, 389; 693, 511]
+        ZoomFactor    1
+        SliderPosition [0, 0]
+        ShowBrowser   off
+        BrowserWidth  100
+        Component {
+          Type          Output
+          Name          "y"
+          Show          on
+          Position      [295, 105]
+          Direction     right
+          Flipped       off
+          Parameter {
+            Variable      "Index"
+            Value         "1"
+            Show          on
+          }
+          Parameter {
+            Variable      "Width"
+            Value         "-1"
+            Show          off
+          }
+        }
+        Component {
+          Type          Input
+          Name          "e"
+          Show          on
+          Position      [55, 105]
+          Direction     right
+          Flipped       off
+          Parameter {
+            Variable      "Index"
+            Value         "2"
+            Show          on
+          }
+          Parameter {
+            Variable      "Width"
+            Value         "-1"
+            Show          off
+          }
+        }
+        Component {
+          Type          Dll
+          Name          "DLL"
+          Show          on
+          Position      [165, 105]
+          Direction     right
+          Flipped       off
+          Parameter {
+            Variable      "Filename"
+            Value         "pi_controller"
+            Show          off
+          }
+          Parameter {
+            Variable      "SampleTime"
+            Value         "ts"
+            Show          off
+          }
+          Parameter {
+            Variable      "OutputDelay"
+            Value         "0.5*ts"
+            Show          off
+          }
+          Parameter {
+            Variable      "Parameters"
+            Value         "[kp, ki, ts]"
+            Show          off
+          }
+        }
+        Component {
+          Type          Scope
+          Name          "Scope"
+          Show          on
+          Position      [295, 60]
+          Direction     up
+          Flipped       off
+          Location      [937, 389; 1515, 693]
+          State         "AAAA/wAAAAD9AAAAAgAAAAEAAAAAAAAAAPwCAAAAA/sAAAAQAFoAb"
+"wBvAG0AQQByAGUAYQAAAAAA/////wAAAFwA////+wAAABQAUwBhAHYAZQBkAFYAaQBlAHcAcwAAAA"
+"AA/////wAAAGYA////+wAAAAwAVAByAGEAYwBlAHMAAAAAAP////8AAABmAP///wAAAAMAAAJCAAA"
+"AXPwBAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQAAAAAAAAAAkIAAABCAP///wAAAkIAAAEU"
+"AAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAOAFQAbwBvAGwAQgBhAHIBAAAAAP////8AA"
+"AAAAAAAAA=="
+          SavedViews    "AAAAAgAAAAA="
+          HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL/gMAAAAJA"
+"AAACQAAAGQAAAAIAAAAZAAAAAUAAABkAAAABAAAAGQAAAAHAAAAZAAAAAYAAABkAAAAAQAAAGQAAA"
+"ADAAAAZAAAAAIAAABkAAAAaQAAAAsBAAABAAAAAAAAAAAAAAAAZP////8AAACBAAAAAAAAAAsAAAB"
+"WAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAA"
+"AAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAA"
+"AAAAAATAAAAAQAAAAAAAAPoAAAAABM="
+          PlotPalettes  "AAAAAQAAAAEAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+"QAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="
+          Axes          "2"
+          TimeRange     "0"
+          ScrollingMode "1"
+          SingleTimeAxis "1"
+          Open          "1"
+          Ts            "-1"
+          SampleLimit   "0"
+          XAxisLabel    "Time (s)"
+          Axis {
+            Name          "Input"
+            AutoScale     1
+            MinValue      0
+            MaxValue      1
+            Signals       {}
+            SignalTypes   [ ]
+            Untangle      0
+            KeepBaseline  off
+            BaselineValue 0
+          }
+          Axis {
+            Name          "Output"
+            AutoScale     1
+            MinValue      0
+            MaxValue      1
+            Signals       {}
+            SignalTypes   [ ]
+            Untangle      0
+            KeepBaseline  off
+            BaselineValue 0
+          }
+          Fourier {
+            SingleXAxis   on
+            AxisLabel     "Frequency"
+            Scaling       0
+            PhaseDisplay  0
+            Axis {
+              Name          ""
+              AutoScale     1
+              MinValue      0
+              MaxValue      1
+              Signals       {}
+              Untangle      0
+              KeepBaseline  off
+              BaselineValue 0
+            }
+            Axis {
+              Name          ""
+              AutoScale     1
+              MinValue      0
+              MaxValue      1
+              Signals       {}
+              Untangle      0
+              KeepBaseline  off
+              BaselineValue 0
+            }
+          }
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "DLL"
+          SrcTerminal   2
+          Points        [220, 105]
+          Branch {
+            DstComponent  "y"
+            DstTerminal   1
+          }
+          Branch {
+            Points        [220, 65]
+            DstComponent  "Scope"
+            DstTerminal   2
+          }
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "e"
+          SrcTerminal   1
+          Points        [100, 105]
+          Branch {
+            DstComponent  "DLL"
+            DstTerminal   1
+          }
+          Branch {
+            Points        [100, 55]
+            DstComponent  "Scope"
+            DstTerminal   1
+          }
+        }
+      }
+    }
+    Component {
+      Type          Reference
+      SrcComponent  "Components/Control/Modulators/Peak Current\\nController"
+      Name          "Peak Current\nController"
+      Show          on
+      Position      [205, 110]
+      Direction     up
+      Flipped       off
+      Frame         [-20, -20; 20, 20]
+      LabelPosition [0, 23]
+      LabelAlign    up
+      Parameter {
+        Variable      "fs"
+        Value         "fs"
+        Show          on
+      }
+      Parameter {
+        Variable      "dmin"
+        Value         "0"
+        Show          off
+      }
+      Parameter {
+        Variable      "dmax"
+        Value         "99"
+        Show          off
+      }
+      Parameter {
+        Variable      "Islope"
+        Value         "1"
+        Show          off
+      }
+      Terminal {
+        Type          Input
+        Position      [-20, -10]
+        Direction     left
+      }
+      Terminal {
+        Type          Input
+        Position      [-20, 10]
+        Direction     left
+      }
+      Terminal {
+        Type          Output
+        Position      [24, 0]
+        Direction     right
+      }
+    }
+    Connection {
+      Type          Wire
+      SrcComponent  "V_dc"
+      SrcTerminal   2
+      Points        [220, 275; 285, 275]
+      Branch {
+        Points        [380, 275]
+        Branch {
+          Points        [425, 275]
+          Branch {
+            Points        [455, 275]
+            Branch {
+              Points        [525, 275]
+              DstComponent  "R1"
+              DstTerminal   1
+            }
+            Branch {
+              DstComponent  "Vm1"
+              DstTerminal   2
+            }
+          }
+          Branch {
+            DstComponent  "R"
+            DstTerminal   1
+          }
+        }
+        Branch {
+          DstComponent  "C1"
+          DstTerminal   2
+        }
+      }
+      Branch {
+        DstComponent  "D1"
+        DstTerminal   1
+      }
+    }
+    Connection {
+      Type          Wire
+      SrcComponent  "L1"
+      SrcTerminal   1
+      Points        [285, 185]
+      Branch {
+        DstComponent  "D1"
+        DstTerminal   2
+      }
+      Branch {
+        DstComponent  "T1"
+        DstTerminal   2
+      }
+    }
+    Connection {
+      Type          Wire
+      SrcComponent  "S1"
+      SrcTerminal   2
+      Points        [525, 185]
+      DstComponent  "R1"
+      DstTerminal   2
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "Step1"
+      SrcTerminal   1
+      Points        [500, 125]
+      DstComponent  "S1"
+      DstTerminal   3
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "Vref"
+      SrcTerminal   1
+      DstComponent  "Sum"
+      DstTerminal   2
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "Peak Current\nController"
+      SrcTerminal   3
+      Points        [255, 110]
+      DstComponent  "T1"
+      DstTerminal   3
+    }
+    Connection {
+      Type          Wire
+      SrcComponent  "T1"
+      SrcTerminal   1
+      Points        [220, 185]
+      DstComponent  "V_dc"
+      DstTerminal   1
+    }
+    Connection {
+      Type          Wire
+      SrcComponent  "Am1"
+      SrcTerminal   1
+      DstComponent  "L1"
+      DstTerminal   2
+    }
+    Connection {
+      Type          Wire
+      SrcComponent  "Am1"
+      SrcTerminal   2
+      Points        [380, 185]
+      Branch {
+        Points        [425, 185]
+        Branch {
+          Points        [455, 185]
+          Branch {
+            DstComponent  "S1"
+            DstTerminal   1
+          }
+          Branch {
+            DstComponent  "Vm1"
+            DstTerminal   1
+          }
+        }
+        Branch {
+          DstComponent  "R"
+          DstTerminal   2
+        }
+      }
+      Branch {
+        DstComponent  "C1"
+        DstTerminal   1
+      }
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "Am1"
+      SrcTerminal   3
+      Points        [355, 75]
+      Branch {
+        DstComponent  "Scope"
+        DstTerminal   2
+      }
+      Branch {
+        Points        [165, 75; 165, 100]
+        DstComponent  "Peak Current\nController"
+        DstTerminal   1
+      }
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "Vm1"
+      SrcTerminal   3
+      Points        [475, 230; 475, 65]
+      Branch {
+        DstComponent  "Scope"
+        DstTerminal   1
+      }
+      Branch {
+        Points        [80, 65]
+        DstComponent  "Sum"
+        DstTerminal   3
+      }
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "PI voltage\ncontroller"
+      SrcTerminal   1
+      DstComponent  "Peak Current\nController"
+      DstTerminal   2
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "Sum"
+      SrcTerminal   1
+      DstComponent  "PI voltage\ncontroller"
+      DstTerminal   2
+    }
+    Annotation {
+      Name          "Current-controlled buck converter\nwith a compiled DLL fi"
+"le implementing voltage control"
+      Position      [185, 30]
+    } 
+  }
+}
+DemoSignature "Cw4kGImBPVv/+o6XCzoaIIZE5U2F42tzH4Jh1/xpoaY="

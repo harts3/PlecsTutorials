@@ -1,0 +1,430 @@
+Plecs {
+  Name          "my_modulatorCscript2"
+  Version       "4.4"
+  CircuitModel  "ContStateSpace"
+  StartTime     "0.0"
+  StopTime      "20e-3"
+  Timeout       ""
+  Solver        "radau"
+  MaxStep       "1e-3"
+  InitStep      "-1"
+  FixedStep     "1e-3"
+  Refine        "1"
+  ZCStepSize    "1e-9"
+  RelTol        "1e-3"
+  AbsTol        "-1"
+  TurnOnThreshold "0"
+  SyncFixedStepTasks "2"
+  UseSingleCommonBaseRate "2"
+  LossVariableLimitExceededMsg "3"
+  NegativeSwitchLossMsg "3"
+  DivisionByZeroMsg "2"
+  StiffnessDetectionMsg "2"
+  MaxConsecutiveZCs "1000"
+  AlgebraicLoopWithStateMachineMsg "2"
+  AssertionAction "1"
+  InitializationCommands ""
+  InitialState  "1"
+  SystemState   ""
+  TaskingMode   "1"
+  TaskConfigurations ""
+  CodeGenParameterInlining "2"
+  CodeGenFloatingPointFormat "2"
+  CodeGenAbsTimeUsageMsg "3"
+  CodeGenBaseName ""
+  CodeGenOutputDir ""
+  CodeGenExtraOpts ""
+  CodeGenTarget "Generic"
+  CodeGenTargetSettings ""
+  ExtendedMatrixPrecision "1"
+  MatrixSignificanceCheck "2"
+  EnableStateSpaceSplitting "2"
+  DisplayStateSpaceSplitting "1"
+  DiscretizationMethod "2"
+  ExternalModeSettings ""
+  AlgebraicLoopMethod "1"
+  AlgebraicLoopTolerance "1e-6"
+  ScriptsDialogGeometry ""
+  ScriptsDialogSplitterPos "0"
+  Schematic {
+    Location      [801, 424; 1482, 718]
+    ZoomFactor    1
+    SliderPosition [0, 0]
+    ShowBrowser   on
+    BrowserWidth  134
+    Component {
+      Type          Scope
+      Name          "PWM"
+      Show          on
+      Position      [280, 95]
+      Direction     up
+      Flipped       off
+      Location      [1035, 45; 1435, 389]
+      State         "AAAA/wAAAAD9AAAAAgAAAAH////6AAABkPwCAAAAA/sAAAAQAFoAbwBvA"
+"G0AQQByAGUAYQAAAAAA/////wAAAG4A////+wAAABQAUwBhAHYAZQBkAFYAaQBlAHcAcwAAAAAA//"
+"///wAAAH4A////+wAAAAwAVAByAGEAYwBlAHMAAAAAAP////8AAAB+AP///wAAAAMAAAGQAAAAU/w"
+"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQAAAAAAAAAAZAAAABfAP///wAAAfQAAAGPAAAA"
+"BAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAOAFQAbwBvAGwAQgBhAHIBAAAAAP////8AAAAAA"
+"AAAAA=="
+      SavedViews    "AAAAAgAAAAA="
+      HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL/gMAAAAJAAAAB"
+"gAAAGQAAAAHAAAAZAAAAAQAAABkAAAABQAAAGQAAAACAAAAZAAAAAMAAABkAAAAAQAAAGQAAAAIAA"
+"AAZAAAAAkAAABkAAAA5gAAAAsBAAABAAAAAAAAAAAAAAAAff////8AAACBAAAAAAAAAAsAAAC1AAA"
+"AAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAA"
+"AAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAA"
+"AAxAAAAAQAAAAAAAAPoAAAAADE="
+      PlotPalettes  "AAAAAQAAAAEAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAA"
+"AEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="
+      Axes          "2"
+      TimeRange     "0"
+      ScrollingMode "1"
+      SingleTimeAxis "1"
+      Open          "0"
+      Ts            "-1"
+      SampleLimit   "0"
+      XAxisLabel    "Time (s)"
+      ShowLegend    "1"
+      Axis {
+        Name          "Comparator Waveform"
+        AutoScale     1
+        MinValue      0
+        MaxValue      1
+        Signals       {}
+        SignalTypes   [ ]
+        Untangle      0
+        KeepBaseline  off
+        BaselineValue 0
+      }
+      Axis {
+        Name          "PWM Modulation Signal"
+        AutoScale     1
+        MinValue      0
+        MaxValue      1
+        Signals       {}
+        SignalTypes   [ ]
+        Untangle      0
+        KeepBaseline  off
+        BaselineValue 0
+      }
+      Fourier {
+        SingleXAxis       on
+        AxisLabel         "Frequency"
+        Scaling           0
+        PhaseDisplay      0
+        ShowFourierLegend off
+        Axis {
+          Name          ""
+          AutoScale     1
+          MinValue      0
+          MaxValue      1
+          Signals       {}
+          Untangle      0
+          KeepBaseline  off
+          BaselineValue 0
+        }
+        Axis {
+          Name          ""
+          AutoScale     1
+          MinValue      0
+          MaxValue      1
+          Signals       {}
+          Untangle      0
+          KeepBaseline  off
+          BaselineValue 0
+        }
+      }
+    }
+    Component {
+      Type          Reference
+      SrcComponent  "Deprecated/Control/Sources/Sine Wave"
+      Name          "Sine Wave"
+      Show          on
+      Position      [65, 35]
+      Direction     up
+      Flipped       off
+      Frame         [-15, -15; 15, 15]
+      LabelPosition [0, 18]
+      LabelAlign    up
+      Parameter {
+        Variable      "Amplitude"
+        Value         "1"
+        Show          on
+      }
+      Parameter {
+        Variable      "Bias"
+        Value         "0"
+        Show          off
+      }
+      Parameter {
+        Variable      "Frequency"
+        Value         "2*pi*50"
+        Show          on
+      }
+      Parameter {
+        Variable      "Phase"
+        Value         "0"
+        Show          off
+      }
+      Parameter {
+        Variable      "Units"
+        Value         "1"
+        Show          off
+      }
+      Terminal {
+        Type          Output
+        Position      [19, 0]
+        Direction     right
+      }
+    }
+    Component {
+      Type          Subsystem
+      Name          "Subsystem"
+      Show          on
+      Position      [180, 100]
+      Direction     up
+      Flipped       off
+      Frame         [-25, -15; 25, 15]
+      LabelPosition [0, 18]
+      LabelAlign    up
+      SampleTime    "-1"
+      CodeGenDiscretizationMethod "2"
+      CodeGenTarget "Generic"
+      MaskDisplayLang "2"
+      MaskIconFrame on
+      MaskIconOpaque off
+      MaskIconRotates on
+      Parameter {
+        Variable      "fs"
+        Prompt        "Switching frequency"
+        Type          FreeText
+        Value         "1000"
+        Show          on
+        Tunable       off
+        TabName       ""
+      }
+      Parameter {
+        Variable      "dr"
+        Prompt        "Dead time ratio"
+        Type          FreeText
+        Value         "0.01"
+        Show          on
+        Tunable       off
+        TabName       ""
+      }
+      Parameter {
+        Variable      "dmin"
+        Prompt        "Minimum duty-cycle"
+        Type          FreeText
+        Value         "0.02"
+        Show          on
+        Tunable       off
+        TabName       ""
+      }
+      Terminal {
+        Type          Input
+        Position      [-25, 0]
+        Direction     left
+      }
+      Terminal {
+        Type          Output
+        Position      [29, 0]
+        Direction     right
+      }
+      Schematic {
+        Location      [834, 680; 1600, 1014]
+        ZoomFactor    1
+        SliderPosition [0, 0]
+        ShowBrowser   off
+        BrowserWidth  100
+        Component {
+          Type          Input
+          Name          "In1"
+          Show          on
+          Position      [60, 80]
+          Direction     right
+          Flipped       off
+          Parameter {
+            Variable      "Index"
+            Value         "1"
+            Show          on
+          }
+          Parameter {
+            Variable      "Width"
+            Value         "-1"
+            Show          off
+          }
+        }
+        Component {
+          Type          Output
+          Name          "Out1"
+          Show          on
+          Position      [220, 80]
+          Direction     right
+          Flipped       off
+          Parameter {
+            Variable      "Index"
+            Value         "2"
+            Show          on
+          }
+          Parameter {
+            Variable      "Width"
+            Value         "-1"
+            Show          off
+          }
+        }
+        Component {
+          Type          CScript
+          Name          "C-Script"
+          Show          on
+          Position      [135, 80]
+          Direction     up
+          Flipped       off
+          Parameter {
+            Variable      "DialogGeometry"
+            Value         "[365 156 500 527]"
+            Show          off
+          }
+          Parameter {
+            Variable      "NumInputs"
+            Value         "1"
+            Show          off
+          }
+          Parameter {
+            Variable      "NumOutputs"
+            Value         "1"
+            Show          off
+          }
+          Parameter {
+            Variable      "NumContStates"
+            Value         "0"
+            Show          off
+          }
+          Parameter {
+            Variable      "NumDiscStates"
+            Value         "1"
+            Show          off
+          }
+          Parameter {
+            Variable      "NumZCSignals"
+            Value         "0"
+            Show          off
+          }
+          Parameter {
+            Variable      "DirectFeedthrough"
+            Value         "1"
+            Show          off
+          }
+          Parameter {
+            Variable      "Ts"
+            Value         "[1/fs, 0;-2, 0]"
+            Show          off
+          }
+          Parameter {
+            Variable      "Parameters"
+            Value         "1/fs dr dmin"
+            Show          off
+          }
+          Parameter {
+            Variable      "LangStandard"
+            Value         "2"
+            Show          off
+          }
+          Parameter {
+            Variable      "GnuExtensions"
+            Value         "1"
+            Show          off
+          }
+          Parameter {
+            Variable      "RuntimeCheck"
+            Value         "2"
+            Show          off
+          }
+          Parameter {
+            Variable      "Declarations"
+            Value         "#include <float.h>\n#include <stdio.h>\n\n#define M"
+" InputSignal(0,0)\n#define OUT OutputSignal(0,0)\n#define STATE DiscState(0)"
+"\n#define NEVER DBL_MAX\n#define DMIN 1e-6\nstatic double Ts, dr, dmin;\n\n\n"
+"typedef enum {\nStart,\nBlank1,\nLow,\nBlank2,\nHigh,\n}state_type;\n\nstate_"
+"type NEXT_STATE;"
+            Show          off
+          }
+          Parameter {
+            Variable      "StartFcn"
+            Value         "Ts = ParamRealData(0,0);\ndr = ParamRealData(1,0);"
+"\ndmin = ParamRealData(2,0);\n\nSTATE = Start;\nNextSampleHit = NEVER;"
+            Show          off
+          }
+          Parameter {
+            Variable      "OutputFcn"
+            Value         "double m1;\ndouble m2;\nstatic double t1;\nstatic d"
+"ouble t2;\nstatic double t3;\nstatic double t4;\n\nswitch ((state_type) STATE"
+") {\ncase Start:\n//Calculate m1, m2. Determine NEXT_STATE.\n\tm1 = (M+1)/2;"
+"\n\tm2 = 1-m1;\n\n\tm1 = m1 - dr;\n\tm2 = m2 - dr;\n\nif(m1 < dmin)\n{\n\tm1 "
+"= dmin;\n}\nif(m2 < dmin)\n{\n\tm2 = dmin;\n}\n\nif(m1 > (1-2*dr-dmin))\n{\n"
+"\tm1 = 1-2*dr-dmin;\n}\nif(m2 > (1-2*dr-dmin))\n{\n\tm2 = 1-2*dr-dmin;\n}\n\t"
+"OUT = 1;\n\tt1 = CurrentTime + Ts*m1/2;\n\tt2 = t1 + dr*Ts;\n\tt3 = t2+m2*Ts;"
+"\n\tt4 = t3+dr*Ts;\n\tNEXT_STATE = Blank1;\n\tNextSampleHit = t1;\n\tbreak;\n"
+"\ncase Blank1:\n\tOUT = 0;\n\tNextSampleHit = t2;\n\tNEXT_STATE = Low;\n\tbre"
+"ak;\n\ncase Low:\n\tOUT = -1;\n\tNextSampleHit = t3;\n\tNEXT_STATE = Blank2;"
+"\n\tbreak;\n\ncase Blank2:\n\tOUT = 0;\n\tNextSampleHit = t4;\n\tNEXT_STATE ="
+" High;\n\tbreak;\n\ncase High:\n\tOUT = 1;\n\tNEXT_STATE = Start;\n\tNextSamp"
+"leHit = NEVER;\n\tbreak;\n}\n"
+            Show          off
+          }
+          Parameter {
+            Variable      "UpdateFcn"
+            Value         "STATE = NEXT_STATE;"
+            Show          off
+          }
+          Parameter {
+            Variable      "DerivativeFcn"
+            Value         ""
+            Show          off
+          }
+          Parameter {
+            Variable      "TerminateFcn"
+            Value         ""
+            Show          off
+          }
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "In1"
+          SrcTerminal   1
+          DstComponent  "C-Script"
+          DstTerminal   1
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "C-Script"
+          SrcTerminal   2
+          DstComponent  "Out1"
+          DstTerminal   1
+        }
+      }
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "Sine Wave"
+      SrcTerminal   1
+      Points        [125, 35]
+      Branch {
+        Points        [230, 35; 230, 90]
+        DstComponent  "PWM"
+        DstTerminal   1
+      }
+      Branch {
+        Points        [125, 100]
+        DstComponent  "Subsystem"
+        DstTerminal   1
+      }
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "Subsystem"
+      SrcTerminal   2
+      DstComponent  "PWM"
+      DstTerminal   2
+    }
+  }
+}

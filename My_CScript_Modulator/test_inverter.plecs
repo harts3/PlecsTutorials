@@ -1,0 +1,1090 @@
+Plecs {
+  Name          "test_inverter"
+  Version       "4.2"
+  CircuitModel  "ContStateSpace"
+  StartTime     "0.0"
+  StopTime      "20e-3"
+  Timeout       ""
+  Solver        "radau"
+  MaxStep       "1e-3"
+  InitStep      "-1"
+  FixedStep     "1e-3"
+  Refine        "1"
+  ZCStepSize    "1e-9"
+  RelTol        "1e-3"
+  AbsTol        "-1"
+  TurnOnThreshold "0"
+  SyncFixedStepTasks "2"
+  UseSingleCommonBaseRate "2"
+  LossVariableLimitExceededMsg "3"
+  NegativeSwitchLossMsg "3"
+  DivisionByZeroMsg "2"
+  StiffnessDetectionMsg "2"
+  MaxConsecutiveZCs "1000"
+  AlgebraicLoopWithStateMachineMsg "2"
+  AssertionAction "1"
+  InitializationCommands ""
+  InitialState  "1"
+  SystemState   ""
+  CodeGenParameterInlining "2"
+  CodeGenInliningExceptions "AAAACwAAAAAA"
+  CodeGenFloatingPointFormat "2"
+  CodeGenAbsTimeUsageMsg "3"
+  CodeGenBaseName ""
+  CodeGenOutputDir ""
+  CodeGenExtraOpts ""
+  CodeGenTarget "Generic"
+  CodeGenTargetSettings ""
+  ExtendedMatrixPrecision "1"
+  MatrixSignificanceCheck "2"
+  EnableStateSpaceSplitting "2"
+  DisplayStateSpaceSplitting "1"
+  DiscretizationMethod "2"
+  ExternalModeSettings ""
+  AlgebraicLoopMethod "1"
+  AlgebraicLoopTolerance "1e-6"
+  Schematic {
+    Location      [353, 52; 1034, 349]
+    ZoomFactor    1
+    SliderPosition [0, 0]
+    ShowBrowser   off
+    BrowserWidth  100
+    Component {
+      Type          Scope
+      Name          "PWM"
+      Show          on
+      Position      [280, 95]
+      Direction     up
+      Flipped       off
+      Location      [1035, 45; 1435, 389]
+      State         "AAAA/wAAAAD9AAAAAgAAAAH////6AAABkPwCAAAAA/sAAAAQAFoAbwBvA"
+"G0AQQByAGUAYQAAAAAA/////wAAAFwA////+wAAABQAUwBhAHYAZQBkAFYAaQBlAHcAcwAAAAAA//"
+"///wAAAGYA////+wAAAAwAVAByAGEAYwBlAHMAAAAAAP////8AAABmAP///wAAAAMAAAGQAAAAU/w"
+"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQAAAAAAAAAAZAAAABCAP///wAAAZAAAAE8AAAA"
+"BAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAOAFQAbwBvAGwAQgBhAHIBAAAAAP////8AAAAAA"
+"AAAAA=="
+      SavedViews    "AAAAAgAAAAA="
+      HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL/gMAAAAJAAAAC"
+"QAAAGQAAAAIAAAAZAAAAAUAAABkAAAABAAAAGQAAAAHAAAAZAAAAAYAAABkAAAAAQAAAGQAAAADAA"
+"AAZAAAAAIAAABkAAAAvQAAAAsBAAABAAAAAAAAAAAAAAAAZP////8AAACBAAAAAAAAAAsAAACqAAA"
+"AAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAA"
+"AAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAA"
+"AATAAAAAQAAAAAAAAPoAAAAABM="
+      PlotPalettes  "AAAAAQAAAAEAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAA"
+"AEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="
+      Axes          "2"
+      TimeRange     "0"
+      ScrollingMode "1"
+      SingleTimeAxis "1"
+      Open          "1"
+      Ts            "-1"
+      SampleLimit   "0"
+      XAxisLabel    "Time (s)"
+      Axis {
+        Name          "Comparator Waveform"
+        AutoScale     1
+        MinValue      0
+        MaxValue      1
+        Signals       {}
+        SignalTypes   [ ]
+        Untangle      0
+        KeepBaseline  off
+        BaselineValue 0
+      }
+      Axis {
+        Name          "PWM Modulation Signal"
+        AutoScale     1
+        MinValue      0
+        MaxValue      1
+        Signals       {}
+        SignalTypes   [ ]
+        Untangle      0
+        KeepBaseline  off
+        BaselineValue 0
+      }
+      Fourier {
+        SingleXAxis   on
+        AxisLabel     "Frequency"
+        Scaling       0
+        PhaseDisplay  0
+        Axis {
+          Name          ""
+          AutoScale     1
+          MinValue      0
+          MaxValue      1
+          Signals       {}
+          Untangle      0
+          KeepBaseline  off
+          BaselineValue 0
+        }
+        Axis {
+          Name          ""
+          AutoScale     1
+          MinValue      0
+          MaxValue      1
+          Signals       {}
+          Untangle      0
+          KeepBaseline  off
+          BaselineValue 0
+        }
+      }
+    }
+    Component {
+      Type          DCVoltageSource
+      Name          "V_dc"
+      Show          off
+      Position      [105, 200]
+      Direction     up
+      Flipped       off
+      Parameter {
+        Variable      "V"
+        Value         "400"
+        Show          on
+      }
+    }
+    Component {
+      Type          Resistor
+      Name          "R1"
+      Show          off
+      Position      [495, 205]
+      Direction     down
+      Flipped       off
+      Parameter {
+        Variable      "R"
+        Value         "50"
+        Show          on
+      }
+    }
+    Component {
+      Type          Inductor
+      Name          "L1"
+      Show          off
+      Position      [380, 165]
+      Direction     left
+      Flipped       off
+      Parameter {
+        Variable      "L"
+        Value         "0.5e-3"
+        Show          on
+      }
+      Parameter {
+        Variable      "i_init"
+        Value         "0"
+        Show          off
+      }
+    }
+    Component {
+      Type          Inductor
+      Name          "L2"
+      Show          off
+      Position      [450, 165]
+      Direction     left
+      Flipped       off
+      Parameter {
+        Variable      "L"
+        Value         "1e-3"
+        Show          on
+      }
+      Parameter {
+        Variable      "i_init"
+        Value         "0"
+        Show          off
+      }
+    }
+    Component {
+      Type          Capacitor
+      Name          "C1"
+      Show          off
+      Position      [415, 200]
+      Direction     down
+      Flipped       on
+      Parameter {
+        Variable      "C"
+        Value         "2e-6"
+        Show          on
+      }
+      Parameter {
+        Variable      "v_init"
+        Value         "0"
+        Show          off
+      }
+    }
+    Component {
+      Type          Voltmeter
+      Name          "Vm1"
+      Show          off
+      Position      [535, 205]
+      Direction     up
+      Flipped       off
+    }
+    Component {
+      Type          Voltmeter
+      Name          "Vm2"
+      Show          off
+      Position      [305, 205]
+      Direction     up
+      Flipped       off
+    }
+    Component {
+      Type          Scope
+      Name          "Outputs"
+      Show          on
+      Position      [620, 210]
+      Direction     up
+      Flipped       off
+      Location      [1035, 412; 1435, 756]
+      State         "AAAA/wAAAAD9AAAAAgAAAAH////6AAABkPwCAAAAA/sAAAAQAFoAbwBvA"
+"G0AQQByAGUAYQAAAAAA/////wAAAFwA////+wAAABQAUwBhAHYAZQBkAFYAaQBlAHcAcwAAAAAA//"
+"///wAAAGYA////+wAAAAwAVAByAGEAYwBlAHMAAAAAAP////8AAABmAP///wAAAAMAAAGQAAAAWPw"
+"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQAAAAAAAAAAZAAAABCAP///wAAAZAAAAE8AAAA"
+"BAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAOAFQAbwBvAGwAQgBhAHIBAAAAAP////8AAAAAA"
+"AAAAA=="
+      SavedViews    "AAAAAgAAAAA="
+      HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL/gMAAAAJAAAAC"
+"QAAAGQAAAAIAAAAZAAAAAUAAABkAAAABAAAAGQAAAAHAAAAZAAAAAYAAABkAAAAAQAAAGQAAAADAA"
+"AAZAAAAAIAAABkAAABkAAAAAsBAAABAAAAAAAAAAAAAAAAZP////8AAACBAAAAAAAAAAsAAACpAAA"
+"AAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAA"
+"AAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAA"
+"ADnAAAAAQAAAAAAAAPoAAAAABM="
+      PlotPalettes  "AAAAAQAAAAEAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAA"
+"AEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="
+      Axes          "2"
+      TimeRange     "0"
+      ScrollingMode "1"
+      SingleTimeAxis "1"
+      Open          "1"
+      Ts            "-1"
+      SampleLimit   "0"
+      XAxisLabel    "Time (s)"
+      Axis {
+        Name          "Inverter Output Voltage"
+        AutoScale     1
+        MinValue      0
+        MaxValue      1
+        Signals       {"Output voltage"}
+        SignalTypes   [ ]
+        AxisLabel     "Voltage (V)"
+        Untangle      0
+        KeepBaseline  off
+        BaselineValue 0
+      }
+      Axis {
+        Name          "Load Voltage"
+        AutoScale     1
+        MinValue      0
+        MaxValue      1
+        Signals       {"Load voltage"}
+        SignalTypes   [ ]
+        AxisLabel     "Voltage (V)"
+        Untangle      0
+        KeepBaseline  off
+        BaselineValue 0
+      }
+      Fourier {
+        SingleXAxis   on
+        AxisLabel     "Frequency"
+        Scaling       0
+        PhaseDisplay  0
+        Axis {
+          Name          ""
+          AutoScale     1
+          MinValue      0
+          MaxValue      1
+          Signals       {}
+          Untangle      0
+          KeepBaseline  off
+          BaselineValue 0
+        }
+        Axis {
+          Name          ""
+          AutoScale     1
+          MinValue      0
+          MaxValue      1
+          Signals       {}
+          Untangle      0
+          KeepBaseline  off
+          BaselineValue 0
+        }
+      }
+    }
+    Component {
+      Type          Reference
+      SrcComponent  "Deprecated/Control/Sources/Sine Wave"
+      Name          "Sine Wave"
+      Show          on
+      Position      [65, 35]
+      Direction     up
+      Flipped       off
+      Frame         [-15, -15; 15, 15]
+      LabelPosition [0, 18]
+      LabelAlign    up
+      Parameter {
+        Variable      "Amplitude"
+        Value         "0.85"
+        Show          on
+      }
+      Parameter {
+        Variable      "Bias"
+        Value         "0"
+        Show          off
+      }
+      Parameter {
+        Variable      "Frequency"
+        Value         "2*pi*50"
+        Show          on
+      }
+      Parameter {
+        Variable      "Phase"
+        Value         "0"
+        Show          off
+      }
+      Parameter {
+        Variable      "Units"
+        Value         "1"
+        Show          off
+      }
+      Terminal {
+        Type          Output
+        Position      [19, 0]
+        Direction     right
+      }
+    }
+    Component {
+      Type          Subsystem
+      Name          "Full bridge"
+      Show          on
+      Position      [215, 200]
+      Direction     down
+      Flipped       on
+      Frame         [-25, -25; 25, 25]
+      LabelPosition [-27, 0]
+      LabelAlign    right
+      SampleTime    "-1"
+      CodeGenTarget "Generic"
+      MaskType      "Full bridge inverter"
+      MaskDescription "This block implements a single phase full bridge invert"
+"er. Two switching signals are required to drive the inverter, one for each sw"
+"itching leg."
+      MaskHelp      "mosfetconverter2level.html"
+      MaskDisplay   "line([0, 0, -10], [20, 10, 10])\nline([0, 0, -10], [10, 0"
+", 0])\nline([0, 0, -10], [-20, -10, -10])\nline([-10, -10], [13, 7])\nline([-"
+"10, -10], [3, -3])\nline([-10, -10], [-7, -13])\nline([-15, -15], [10, -10])"
+"\nline([-15, -20], [0, 0])\nline([-4, -8, -4], [2, 0, -2])\nline([12, 12, 0],"
+" [6, 14, 14])\nline([5, 19], [-6, -6])\nline([0, 12, 12], [-14, -14, -6])\nli"
+"ne([12, 19, 5, 12], [-6, 6, 6, -6])\ncircle(-27.5, -13.5, .5)"
+      MaskIconFrame on
+      MaskIconOpaque on
+      MaskIconRotates on
+      Parameter {
+        Variable      "Ron"
+        Prompt        "MOSFET on-resistance Ron"
+        Type          FreeText
+        Value         "0"
+        Show          off
+        Tunable       off
+        TabName       ""
+      }
+      Parameter {
+        Variable      "therm"
+        Prompt        "MOSFET thermal description"
+        Type          Thermal
+        Class         ""
+        Value         ""
+        Show          off
+        TabName       ""
+      }
+      Parameter {
+        Variable      "T_init"
+        Prompt        "MOSFET initial temperature"
+        Type          FreeText
+        Value         "0"
+        Show          off
+        Tunable       off
+        TabName       ""
+      }
+      Terminal {
+        Type          Port
+        Position      [-30, -10]
+        Direction     left
+      }
+      Terminal {
+        Type          Port
+        Position      [-30, 15]
+        Direction     left
+      }
+      Terminal {
+        Type          Input
+        Position      [-15, -25]
+        Direction     up
+      }
+      Terminal {
+        Type          Port
+        Position      [0, -30]
+        Direction     up
+      }
+      Terminal {
+        Type          Port
+        Position      [0, 30]
+        Direction     down
+      }
+      Schematic {
+        Location      [51, 400; 469, 762]
+        ZoomFactor    1
+        SliderPosition [0, 0]
+        ShowBrowser   off
+        BrowserWidth  100
+        Component {
+          Type          Input
+          Name          "pulses"
+          Show          on
+          Position      [25, 30]
+          Direction     left
+          Flipped       on
+          Parameter {
+            Variable      "Index"
+            Value         "3"
+            Show          on
+          }
+          Parameter {
+            Variable      "Width"
+            Value         "-1"
+            Show          off
+          }
+        }
+        Component {
+          Type          Port
+          Name          "a"
+          Show          on
+          Position      [25, 135]
+          Direction     right
+          Flipped       off
+          Parameter {
+            Variable      "Index"
+            Value         "1"
+            Show          on
+          }
+          Parameter {
+            Variable      "Width"
+            Value         "-1"
+            Show          off
+          }
+        }
+        Component {
+          Type          Port
+          Name          "b"
+          Show          on
+          Position      [25, 175]
+          Direction     right
+          Flipped       off
+          Parameter {
+            Variable      "Index"
+            Value         "2"
+            Show          on
+          }
+          Parameter {
+            Variable      "Width"
+            Value         "-1"
+            Show          off
+          }
+        }
+        Component {
+          Type          Port
+          Name          "+"
+          Show          on
+          Position      [315, 25]
+          Direction     up
+          Flipped       on
+          Parameter {
+            Variable      "Index"
+            Value         "4"
+            Show          on
+          }
+          Parameter {
+            Variable      "Width"
+            Value         "-1"
+            Show          off
+          }
+        }
+        Component {
+          Type          Port
+          Name          "-"
+          Show          on
+          Position      [315, 325]
+          Direction     up
+          Flipped       off
+          Parameter {
+            Variable      "Index"
+            Value         "5"
+            Show          on
+          }
+          Parameter {
+            Variable      "Width"
+            Value         "-1"
+            Show          off
+          }
+        }
+        Component {
+          Type          Function
+          Name          "GateFcn1"
+          Show          off
+          Position      [90, 105]
+          Direction     right
+          Flipped       off
+          Frame         [-20, -10; 20, 10]
+          LabelPosition [0, 13]
+          LabelAlign    up
+          Parameter {
+            Variable      "f(u)"
+            Value         "u>0"
+            Show          off
+          }
+        }
+        Component {
+          Type          Function
+          Name          "GateFcn2"
+          Show          off
+          Position      [90, 245]
+          Direction     right
+          Flipped       off
+          Frame         [-20, -10; 20, 10]
+          LabelPosition [0, 13]
+          LabelAlign    up
+          Parameter {
+            Variable      "f(u)"
+            Value         "u<0"
+            Show          off
+          }
+        }
+        Component {
+          Type          Function
+          Name          "GateFcn3"
+          Show          off
+          Position      [260, 105]
+          Direction     right
+          Flipped       off
+          Frame         [-20, -10; 20, 10]
+          LabelPosition [0, 13]
+          LabelAlign    up
+          Parameter {
+            Variable      "f(u)"
+            Value         "u<0"
+            Show          off
+          }
+        }
+        Component {
+          Type          Function
+          Name          "GateFcn4"
+          Show          off
+          Position      [260, 245]
+          Direction     right
+          Flipped       off
+          Frame         [-20, -10; 20, 10]
+          LabelPosition [0, 13]
+          LabelAlign    up
+          Parameter {
+            Variable      "f(u)"
+            Value         "u>0"
+            Show          off
+          }
+        }
+        Component {
+          Type          MosfetWithDiode
+          Name          "MOSFET1"
+          Show          on
+          Position      [145, 105]
+          Direction     up
+          Flipped       off
+          Parameter {
+            Variable      "Ron"
+            Value         "Ron"
+            Show          off
+          }
+          Parameter {
+            Variable      "s_init"
+            Value         "0"
+            Show          off
+          }
+          Parameter {
+            Variable      "thermal"
+            Value         "ref:therm"
+            Show          off
+          }
+          Parameter {
+            Variable      "T_init"
+            Value         "T_init"
+            Show          off
+          }
+        }
+        Component {
+          Type          MosfetWithDiode
+          Name          "MOSFET2"
+          Show          on
+          Position      [145, 245]
+          Direction     up
+          Flipped       off
+          Parameter {
+            Variable      "Ron"
+            Value         "Ron"
+            Show          off
+          }
+          Parameter {
+            Variable      "s_init"
+            Value         "0"
+            Show          off
+          }
+          Parameter {
+            Variable      "thermal"
+            Value         "ref:therm"
+            Show          off
+          }
+          Parameter {
+            Variable      "T_init"
+            Value         "T_init"
+            Show          off
+          }
+        }
+        Component {
+          Type          MosfetWithDiode
+          Name          "MOSFET3"
+          Show          on
+          Position      [315, 105]
+          Direction     up
+          Flipped       off
+          Parameter {
+            Variable      "Ron"
+            Value         "Ron"
+            Show          off
+          }
+          Parameter {
+            Variable      "s_init"
+            Value         "0"
+            Show          off
+          }
+          Parameter {
+            Variable      "thermal"
+            Value         "ref:therm"
+            Show          off
+          }
+          Parameter {
+            Variable      "T_init"
+            Value         "T_init"
+            Show          off
+          }
+        }
+        Component {
+          Type          MosfetWithDiode
+          Name          "MOSFET4"
+          Show          on
+          Position      [315, 245]
+          Direction     up
+          Flipped       off
+          Parameter {
+            Variable      "Ron"
+            Value         "Ron"
+            Show          off
+          }
+          Parameter {
+            Variable      "s_init"
+            Value         "0"
+            Show          off
+          }
+          Parameter {
+            Variable      "thermal"
+            Value         "ref:therm"
+            Show          off
+          }
+          Parameter {
+            Variable      "T_init"
+            Value         "T_init"
+            Show          off
+          }
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "GateFcn2"
+          SrcTerminal   2
+          DstComponent  "MOSFET2"
+          DstTerminal   3
+        }
+        Connection {
+          Type          Wire
+          SrcComponent  "MOSFET2"
+          SrcTerminal   1
+          Points        [145, 135]
+          Branch {
+            DstComponent  "a"
+            DstTerminal   1
+          }
+          Branch {
+            DstComponent  "MOSFET1"
+            DstTerminal   2
+          }
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "GateFcn1"
+          SrcTerminal   2
+          DstComponent  "MOSFET1"
+          DstTerminal   3
+        }
+        Connection {
+          Type          Wire
+          SrcComponent  "MOSFET4"
+          SrcTerminal   1
+          Points        [315, 175]
+          Branch {
+            DstComponent  "MOSFET3"
+            DstTerminal   2
+          }
+          Branch {
+            DstComponent  "b"
+            DstTerminal   1
+          }
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "GateFcn3"
+          SrcTerminal   2
+          DstComponent  "MOSFET3"
+          DstTerminal   3
+        }
+        Connection {
+          Type          Wire
+          SrcComponent  "MOSFET1"
+          SrcTerminal   1
+          Points        [145, 75; 315, 75]
+          Branch {
+            DstComponent  "+"
+            DstTerminal   1
+          }
+          Branch {
+            DstComponent  "MOSFET3"
+            DstTerminal   1
+          }
+        }
+        Connection {
+          Type          Wire
+          SrcComponent  "MOSFET2"
+          SrcTerminal   2
+          Points        [145, 275; 315, 275]
+          Branch {
+            DstComponent  "MOSFET4"
+            DstTerminal   2
+          }
+          Branch {
+            DstComponent  "-"
+            DstTerminal   1
+          }
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "GateFcn4"
+          SrcTerminal   2
+          DstComponent  "MOSFET4"
+          DstTerminal   3
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "pulses"
+          SrcTerminal   1
+          Points        [55, 30; 55, 65]
+          Branch {
+            Points        [55, 105]
+            Branch {
+              DstComponent  "GateFcn1"
+              DstTerminal   1
+            }
+            Branch {
+              DstComponent  "GateFcn2"
+              DstTerminal   1
+            }
+          }
+          Branch {
+            Points        [225, 65; 225, 105]
+            Branch {
+              DstComponent  "GateFcn4"
+              DstTerminal   1
+            }
+            Branch {
+              DstComponent  "GateFcn3"
+              DstTerminal   1
+            }
+          }
+        }
+      }
+      MaskProbe {
+        Name          "Device voltages"
+        Probe {
+          Component     "MOSFET1"
+          Path          ""
+          Signals       {"Device voltage"}
+        }
+        Probe {
+          Component     "MOSFET2"
+          Path          ""
+          Signals       {"Device voltage"}
+        }
+        Probe {
+          Component     "MOSFET3"
+          Path          ""
+          Signals       {"Device voltage"}
+        }
+        Probe {
+          Component     "MOSFET4"
+          Path          ""
+          Signals       {"Device voltage"}
+        }
+      }
+      MaskProbe {
+        Name          "Device currents"
+        Probe {
+          Component     "MOSFET1"
+          Path          ""
+          Signals       {"Device current"}
+        }
+        Probe {
+          Component     "MOSFET2"
+          Path          ""
+          Signals       {"Device current"}
+        }
+        Probe {
+          Component     "MOSFET3"
+          Path          ""
+          Signals       {"Device current"}
+        }
+        Probe {
+          Component     "MOSFET4"
+          Path          ""
+          Signals       {"Device current"}
+        }
+      }
+      MaskProbe {
+        Name          "Device conduct."
+        Probe {
+          Component     "MOSFET1"
+          Path          ""
+          Signals       {"Device conductivity"}
+        }
+        Probe {
+          Component     "MOSFET2"
+          Path          ""
+          Signals       {"Device conductivity"}
+        }
+        Probe {
+          Component     "MOSFET3"
+          Path          ""
+          Signals       {"Device conductivity"}
+        }
+        Probe {
+          Component     "MOSFET4"
+          Path          ""
+          Signals       {"Device conductivity"}
+        }
+      }
+      MaskProbe {
+        Name          "Device junction temp"
+        Probe {
+          Component     "MOSFET1"
+          Path          ""
+          Signals       {"Device junction temp"}
+        }
+        Probe {
+          Component     "MOSFET2"
+          Path          ""
+          Signals       {"Device junction temp"}
+        }
+        Probe {
+          Component     "MOSFET3"
+          Path          ""
+          Signals       {"Device junction temp"}
+        }
+        Probe {
+          Component     "MOSFET4"
+          Path          ""
+          Signals       {"Device junction temp"}
+        }
+      }
+      MaskProbe {
+        Name          "Device cond. losses"
+        Probe {
+          Component     "MOSFET1"
+          Path          ""
+          Signals       {"Device conduction loss"}
+        }
+        Probe {
+          Component     "MOSFET2"
+          Path          ""
+          Signals       {"Device conduction loss"}
+        }
+        Probe {
+          Component     "MOSFET3"
+          Path          ""
+          Signals       {"Device conduction loss"}
+        }
+        Probe {
+          Component     "MOSFET4"
+          Path          ""
+          Signals       {"Device conduction loss"}
+        }
+      }
+      MaskProbe {
+        Name          "Device sw. losses"
+        Probe {
+          Component     "MOSFET1"
+          Path          ""
+          Signals       {"Device switching loss"}
+        }
+        Probe {
+          Component     "MOSFET2"
+          Path          ""
+          Signals       {"Device switching loss"}
+        }
+        Probe {
+          Component     "MOSFET3"
+          Path          ""
+          Signals       {"Device switching loss"}
+        }
+        Probe {
+          Component     "MOSFET4"
+          Path          ""
+          Signals       {"Device switching loss"}
+        }
+      }
+    }
+    Connection {
+      Type          Wire
+      SrcComponent  "V_dc"
+      SrcTerminal   2
+      Points        [105, 240; 215, 240]
+      DstComponent  "Full bridge"
+      DstTerminal   5
+    }
+    Connection {
+      Type          Wire
+      SrcComponent  "L1"
+      SrcTerminal   2
+      Points        [415, 165]
+      Branch {
+        DstComponent  "L2"
+        DstTerminal   1
+      }
+      Branch {
+        DstComponent  "C1"
+        DstTerminal   1
+      }
+    }
+    Connection {
+      Type          Wire
+      SrcComponent  "C1"
+      SrcTerminal   2
+      Points        [415, 240]
+      Branch {
+        Points        [305, 240]
+        Branch {
+          DstComponent  "Vm2"
+          DstTerminal   2
+        }
+        Branch {
+          Points        [270, 240; 270, 215]
+          DstComponent  "Full bridge"
+          DstTerminal   2
+        }
+      }
+      Branch {
+        Points        [495, 240]
+        Branch {
+          DstComponent  "R1"
+          DstTerminal   1
+        }
+        Branch {
+          Points        [535, 240]
+          DstComponent  "Vm1"
+          DstTerminal   2
+        }
+      }
+    }
+    Connection {
+      Type          Wire
+      SrcComponent  "L2"
+      SrcTerminal   2
+      Points        [495, 165]
+      Branch {
+        DstComponent  "R1"
+        DstTerminal   2
+      }
+      Branch {
+        Points        [535, 165]
+        DstComponent  "Vm1"
+        DstTerminal   1
+      }
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "Vm1"
+      SrcTerminal   3
+      DstComponent  "Outputs"
+      DstTerminal   1
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "Vm2"
+      SrcTerminal   3
+      Points        [325, 205; 325, 255; 575, 255; 575, 215]
+      DstComponent  "Outputs"
+      DstTerminal   2
+    }
+    Connection {
+      Type          Wire
+      SrcComponent  "L1"
+      SrcTerminal   1
+      Points        [305, 165]
+      Branch {
+        DstComponent  "Vm2"
+        DstTerminal   1
+      }
+      Branch {
+        Points        [270, 165; 270, 190]
+        DstComponent  "Full bridge"
+        DstTerminal   1
+      }
+    }
+    Connection {
+      Type          Wire
+      SrcComponent  "V_dc"
+      SrcTerminal   1
+      Points        [105, 165; 215, 165]
+      DstComponent  "Full bridge"
+      DstTerminal   4
+    }
+    Connection {
+      Type          Signal
+      Points        [209, 100; 230, 100]
+      Branch {
+        DstComponent  "Full bridge"
+        DstTerminal   3
+      }
+      Branch {
+        DstComponent  "PWM"
+        DstTerminal   2
+      }
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "Sine Wave"
+      SrcTerminal   1
+      Points        [125, 35]
+      Branch {
+        Points        [230, 35; 230, 90]
+        DstComponent  "PWM"
+        DstTerminal   1
+      }
+      Branch {
+        Points        [125, 100; 155, 100]
+      }
+    }
+    Annotation {
+      Name          "Inverter circuit to test bipolar PWM modulators"
+      Position      [465, 50]
+    } 
+  }
+}
