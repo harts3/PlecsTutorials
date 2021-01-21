@@ -47,7 +47,7 @@ Plecs {
   ScriptsDialogGeometry ""
   ScriptsDialogSplitterPos "0"
   Schematic {
-    Location      [769, 30; 1535, 776]
+    Location      [62, 33; 828, 776]
     ZoomFactor    1
     SliderPosition [0, 0]
     ShowBrowser   off
@@ -97,133 +97,32 @@ Plecs {
       Flipped       off
     }
     Component {
-      Type          CScript
-      Name          "C-Script"
-      Show          on
-      Position      [600, 180]
-      Direction     up
-      Flipped       off
-      Parameter {
-        Variable      "DialogGeometry"
-        Value         "[961 630 500 334]"
-        Show          off
-      }
-      Parameter {
-        Variable      "NumInputs"
-        Value         "1"
-        Show          off
-      }
-      Parameter {
-        Variable      "NumOutputs"
-        Value         "2"
-        Show          off
-      }
-      Parameter {
-        Variable      "NumContStates"
-        Value         "0"
-        Show          off
-      }
-      Parameter {
-        Variable      "NumDiscStates"
-        Value         "1"
-        Show          off
-      }
-      Parameter {
-        Variable      "NumZCSignals"
-        Value         "0"
-        Show          off
-      }
-      Parameter {
-        Variable      "DirectFeedthrough"
-        Value         "1"
-        Show          off
-      }
-      Parameter {
-        Variable      "Ts"
-        Value         "0.0001"
-        Show          off
-      }
-      Parameter {
-        Variable      "Parameters"
-        Value         ""
-        Show          off
-      }
-      Parameter {
-        Variable      "LangStandard"
-        Value         "2"
-        Show          off
-      }
-      Parameter {
-        Variable      "GnuExtensions"
-        Value         "1"
-        Show          off
-      }
-      Parameter {
-        Variable      "RuntimeCheck"
-        Value         "2"
-        Show          off
-      }
-      Parameter {
-        Variable      "Declarations"
-        Value         "double f, t0, t,t_zero,V_last;\n#define V_Input InputSi"
-"gnal(0,0)\n"
-        Show          off
-      }
-      Parameter {
-        Variable      "StartFcn"
-        Value         "f = 0;\nt0 = 0;\nt = 0;\nt_zero = 0;\n"
-        Show          off
-      }
-      Parameter {
-        Variable      "OutputFcn"
-        Value         "OutputSignal(0,0) = f;\nOutputSignal(0,1) = V_Input;"
-        Show          off
-      }
-      Parameter {
-        Variable      "UpdateFcn"
-        Value         "t = t+0.0001;\nif (V_last * V_Input < 0)\n{\n\tif (1/(t"
-"-t_zero) < 100)\n\t{\n\t\tf =  1/(t - t_zero);\n\t\tf = f/2;\n\t\tt_zero = t;"
-"\n\t}\n}\nV_last = V_Input;\n\t"
-        Show          off
-      }
-      Parameter {
-        Variable      "DerivativeFcn"
-        Value         ""
-        Show          off
-      }
-      Parameter {
-        Variable      "TerminateFcn"
-        Value         ""
-        Show          off
-      }
-    }
-    Component {
       Type          Scope
       Name          "Scope"
       Show          on
       Position      [750, 180]
       Direction     up
       Flipped       off
-      Location      [995, 389; 1345, 614]
+      Location      [889, 151; 1490, 674]
       State         "AAAA/wAAAAD9AAAAAgAAAAEAAAAAAAAAAPwCAAAAA/sAAAAQAFoAbwBvA"
 "G0AQQByAGUAYQAAAAAA/////wAAAD8A////+wAAABQAUwBhAHYAZQBkAFYAaQBlAHcAcwAAAAAA//"
-"///wAAAH4A////+wAAAAwAVAByAGEAYwBlAHMAAAAAAP////8AAAB+AP///wAAAAMAAAAAAAAAAPw"
-"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQAAAAAAP////8AAABfAP///wAAAbYAAAD6AAAA"
+"///wAAAH4A////+wAAAAwAVAByAGEAYwBlAHMAAAAAAP////8AAAB+AP///wAAAAMAAALvAAAAkfw"
+"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQBAAAAAAAAAu8AAABfAP///wAAAu8AAAHZAAAA"
 "BAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAOAFQAbwBvAGwAQgBhAHIBAAAAAP////8AAAAAA"
 "AAAAA=="
       SavedViews    "AAAAAgAAAAA="
-      HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL/gMAAAAJAAAAC"
-"QAAAH0AAAAIAAAAfQAAAAMAAAB9AAAAAgAAAH0AAAABAAAAfQAAAAcAAAB9AAAABgAAAH0AAAAFAA"
-"AAfQAAAAQAAAB9AAAAswAAAAsBAAABAAAAAAAAAAAAAAAAff////8AAACBAAAAAAAAAAsAAACCAAA"
+      HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL/gMAAAAJAAAAB"
+"AAAAH0AAAAFAAAAfQAAAAYAAAB9AAAABwAAAH0AAAAIAAAAfQAAAAkAAAB9AAAAAQAAAH0AAAACAA"
+"AAfQAAAAMAAAB9AAAC7wAAAAsBAAABAAAAAAAAAAAAAAAAff////8AAACBAAAAAAAAAAsAAABqAAA"
 "AAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAA"
 "AAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAA"
-"AAxAAAAAQAAAAAAAAPoAAAAADE="
+"AKFAAAAAQAAAAAAAAPoAAAAADE="
       PlotPalettes  "AAAAAQAAAAEAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
       Axes          "1"
       TimeRange     "0.0"
       ScrollingMode "1"
       SingleTimeAxis "1"
-      Open          "0"
+      Open          "1"
       Ts            "-1"
       SampleLimit   "0"
       XAxisLabel    ""
@@ -271,7 +170,7 @@ Plecs {
       }
       Parameter {
         Variable      "Inputs"
-        Value         "++"
+        Value         "++++"
         Show          off
       }
       Parameter {
@@ -285,7 +184,7 @@ Plecs {
       SrcComponent  "Components/Control/Sources/White Noise"
       Name          "White Noise"
       Show          on
-      Position      [365, 285]
+      Position      [315, 260]
       Direction     up
       Flipped       off
       Frame         [-15, -15; 15, 15]
@@ -315,6 +214,290 @@ Plecs {
         Type          Output
         Position      [19, 0]
         Direction     right
+      }
+    }
+    Component {
+      Type          ACVoltageSource
+      Name          "V_harm1"
+      Show          on
+      Position      [145, 425]
+      Direction     down
+      Flipped       on
+      Parameter {
+        Variable      "V"
+        Value         "100"
+        Show          off
+      }
+      Parameter {
+        Variable      "w"
+        Value         "2*pi*40"
+        Show          off
+      }
+      Parameter {
+        Variable      "phi"
+        Value         "0"
+        Show          off
+      }
+    }
+    Component {
+      Type          Resistor
+      Name          "R2"
+      Show          on
+      Position      [310, 425]
+      Direction     up
+      Flipped       off
+      Parameter {
+        Variable      "R"
+        Value         "1"
+        Show          off
+      }
+    }
+    Component {
+      Type          Voltmeter
+      Name          "Vm2"
+      Show          on
+      Position      [390, 420]
+      Direction     up
+      Flipped       off
+    }
+    Component {
+      Type          ACVoltageSource
+      Name          "V_harm2"
+      Show          on
+      Position      [140, 580]
+      Direction     down
+      Flipped       on
+      Parameter {
+        Variable      "V"
+        Value         "100"
+        Show          off
+      }
+      Parameter {
+        Variable      "w"
+        Value         "2*pi*60"
+        Show          off
+      }
+      Parameter {
+        Variable      "phi"
+        Value         "0"
+        Show          off
+      }
+    }
+    Component {
+      Type          Resistor
+      Name          "R3"
+      Show          on
+      Position      [305, 580]
+      Direction     up
+      Flipped       off
+      Parameter {
+        Variable      "R"
+        Value         "1"
+        Show          off
+      }
+    }
+    Component {
+      Type          Voltmeter
+      Name          "Vm3"
+      Show          on
+      Position      [385, 575]
+      Direction     up
+      Flipped       off
+    }
+    Component {
+      Type          Subsystem
+      Name          "Sub"
+      Show          on
+      Position      [615, 200]
+      Direction     up
+      Flipped       off
+      Frame         [-35, -40; 35, 40]
+      LabelPosition [0, 0]
+      SampleTime    "-1"
+      CodeGenDiscretizationMethod "2"
+      CodeGenTarget "Generic"
+      MaskDisplayLang "2"
+      MaskIconFrame on
+      MaskIconOpaque off
+      MaskIconRotates on
+      Parameter {
+        Variable      "f_cutoff"
+        Prompt        "f_cutoff"
+        Type          FreeText
+        Value         "21"
+        Show          off
+        Tunable       off
+        TabName       ""
+      }
+      Terminal {
+        Type          Output
+        Position      [39, -20]
+        Direction     right
+      }
+      Terminal {
+        Type          Input
+        Position      [-35, -20]
+        Direction     left
+      }
+      Schematic {
+        Location      [403, 346; 773, 527]
+        ZoomFactor    1
+        SliderPosition [0, 0]
+        ShowBrowser   off
+        BrowserWidth  100
+        Component {
+          Type          CScript
+          Name          "C-Script"
+          Show          on
+          Position      [85, 70]
+          Direction     up
+          Flipped       off
+          Parameter {
+            Variable      "DialogGeometry"
+            Value         "[499 58 500 334]"
+            Show          off
+          }
+          Parameter {
+            Variable      "NumInputs"
+            Value         "1"
+            Show          off
+          }
+          Parameter {
+            Variable      "NumOutputs"
+            Value         "2"
+            Show          off
+          }
+          Parameter {
+            Variable      "NumContStates"
+            Value         "0"
+            Show          off
+          }
+          Parameter {
+            Variable      "NumDiscStates"
+            Value         "1"
+            Show          off
+          }
+          Parameter {
+            Variable      "NumZCSignals"
+            Value         "0"
+            Show          off
+          }
+          Parameter {
+            Variable      "DirectFeedthrough"
+            Value         "1"
+            Show          off
+          }
+          Parameter {
+            Variable      "Ts"
+            Value         "0.0001"
+            Show          off
+          }
+          Parameter {
+            Variable      "Parameters"
+            Value         "f_cutoff"
+            Show          off
+          }
+          Parameter {
+            Variable      "LangStandard"
+            Value         "2"
+            Show          off
+          }
+          Parameter {
+            Variable      "GnuExtensions"
+            Value         "1"
+            Show          off
+          }
+          Parameter {
+            Variable      "RuntimeCheck"
+            Value         "2"
+            Show          off
+          }
+          Parameter {
+            Variable      "Declarations"
+            Value         "double f, t0, t,t_zero,V_last, f_cutoff;\n#define V"
+"_Input InputSignal(0,0)\n\n"
+            Show          off
+          }
+          Parameter {
+            Variable      "StartFcn"
+            Value         "f = 0;\nt0 = 0;\nt = 0;\nt_zero = 0;\nf_cutoff = Pa"
+"ramRealData(0,0);\n"
+            Show          off
+          }
+          Parameter {
+            Variable      "OutputFcn"
+            Value         "OutputSignal(0,0) = f;\nOutputSignal(0,1) = V_Input"
+";"
+            Show          off
+          }
+          Parameter {
+            Variable      "UpdateFcn"
+            Value         "t = t+0.0001;\nif (V_last * V_Input < 0)\n{\n\tif ("
+"1/(t-t_zero) < f_cutoff*2)\n\t{\n\t\tf =  1/(t - t_zero);\n\t\tf = f/2;\n\t\t"
+"t_zero = t;\n\t}\n}\nV_last = V_Input;\n\t"
+            Show          off
+          }
+          Parameter {
+            Variable      "DerivativeFcn"
+            Value         ""
+            Show          off
+          }
+          Parameter {
+            Variable      "TerminateFcn"
+            Value         ""
+            Show          off
+          }
+        }
+        Component {
+          Type          Output
+          Name          "1"
+          Show          on
+          Position      [150, 70]
+          Direction     right
+          Flipped       off
+          Parameter {
+            Variable      "Index"
+            Value         "1"
+            Show          on
+          }
+          Parameter {
+            Variable      "Width"
+            Value         "-1"
+            Show          off
+          }
+        }
+        Component {
+          Type          Input
+          Name          "2"
+          Show          on
+          Position      [20, 70]
+          Direction     right
+          Flipped       off
+          Parameter {
+            Variable      "Index"
+            Value         "2"
+            Show          on
+          }
+          Parameter {
+            Variable      "Width"
+            Value         "-1"
+            Show          off
+          }
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "C-Script"
+          SrcTerminal   2
+          DstComponent  "1"
+          DstTerminal   1
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "2"
+          SrcTerminal   1
+          DstComponent  "C-Script"
+          DstTerminal   1
+        }
       }
     }
     Connection {
@@ -351,24 +534,16 @@ Plecs {
     }
     Connection {
       Type          Signal
-      SrcComponent  "C-Script"
-      SrcTerminal   2
+      SrcComponent  "Sub"
+      SrcTerminal   1
       DstComponent  "Scope"
       DstTerminal   1
     }
     Connection {
       Type          Signal
-      SrcComponent  "White Noise"
-      SrcTerminal   1
-      Points        [425, 285; 425, 185]
-      DstComponent  "Sum1"
-      DstTerminal   3
-    }
-    Connection {
-      Type          Signal
       SrcComponent  "Vm1"
       SrcTerminal   3
-      Points        [420, 180; 420, 175]
+      Points        [420, 180; 420, 165]
       DstComponent  "Sum1"
       DstTerminal   2
     }
@@ -376,8 +551,96 @@ Plecs {
       Type          Signal
       SrcComponent  "Sum1"
       SrcTerminal   1
-      DstComponent  "C-Script"
-      DstTerminal   1
+      DstComponent  "Sub"
+      DstTerminal   2
+    }
+    Connection {
+      Type          Wire
+      SrcComponent  "R2"
+      SrcTerminal   2
+      Points        [310, 475]
+      Branch {
+        Points        [145, 475]
+        DstComponent  "V_harm1"
+        DstTerminal   2
+      }
+      Branch {
+        Points        [390, 475]
+        DstComponent  "Vm2"
+        DstTerminal   2
+      }
+    }
+    Connection {
+      Type          Wire
+      SrcComponent  "R2"
+      SrcTerminal   1
+      Points        [310, 370; 350, 370]
+      Branch {
+        Points        [390, 370]
+        DstComponent  "Vm2"
+        DstTerminal   1
+      }
+      Branch {
+        Points        [350, 365; 145, 365]
+        DstComponent  "V_harm1"
+        DstTerminal   1
+      }
+    }
+    Connection {
+      Type          Wire
+      SrcComponent  "R3"
+      SrcTerminal   2
+      Points        [305, 630]
+      Branch {
+        Points        [140, 630]
+        DstComponent  "V_harm2"
+        DstTerminal   2
+      }
+      Branch {
+        Points        [385, 630]
+        DstComponent  "Vm3"
+        DstTerminal   2
+      }
+    }
+    Connection {
+      Type          Wire
+      SrcComponent  "R3"
+      SrcTerminal   1
+      Points        [305, 525; 345, 525]
+      Branch {
+        Points        [385, 525]
+        DstComponent  "Vm3"
+        DstTerminal   1
+      }
+      Branch {
+        Points        [345, 520; 140, 520]
+        DstComponent  "V_harm2"
+        DstTerminal   1
+      }
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "Vm2"
+      SrcTerminal   3
+      Points        [430, 420; 430, 185]
+      DstComponent  "Sum1"
+      DstTerminal   4
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "Vm3"
+      SrcTerminal   3
+      Points        [435, 575; 435, 195]
+      DstComponent  "Sum1"
+      DstTerminal   5
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "White Noise"
+      SrcTerminal   1
+      Points        [425, 260; 425, 175]
+      DstComponent  "Sum1"
+      DstTerminal   3
     }
   }
 }
